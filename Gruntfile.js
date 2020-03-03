@@ -1,13 +1,18 @@
 module.exports = function (grunt) {
   grunt.initConfig({
-    less: {
-      compile: {
-        files: { 'dist/compiled.css': 'css/*.less' }
-      } 
+    htmlmin: {
+      options: {
+	      removeComments:true,
+	      collapseWhitespace:true
+      } ,
+      files:{
+	      src:"./index.html",
+	      dest:"dist/index.html"
+      }
     }
   });
 
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
 
-  grunt.registerTask('default', ['less:compile']);
+  grunt.registerTask('default', ['htmlmin']);
 };
